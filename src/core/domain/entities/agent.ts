@@ -1,4 +1,4 @@
-interface Ability {
+export interface Ability {
   slot: string;
   name: string;
   description: string;
