@@ -37,7 +37,7 @@ interface GetAllResponse {
   data: RawAgent[];
 }
 
-type FindByCallback = (agent: RawAgent) => boolean;
+type FindByPredicate = (agent: RawAgent) => boolean;
 
 export class HttpAgentGateway implements AgentGateway {
   async getAll() {
@@ -59,12 +59,12 @@ export class HttpAgentGateway implements AgentGateway {
     );
   }
 
-  private async findBy(callback: FindByCallback) {
+  private async findBy(predicate: FindByPredicate) {
     const response = await http<GetAllResponse>({ url: './data/agents.json' });
 
     const agents = response.data.data;
 
-    const rawAgent = agents.find(callback);
+    const rawAgent = agents.find(predicate);
 
     if (!rawAgent) {
       return null;
