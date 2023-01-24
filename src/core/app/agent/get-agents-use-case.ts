@@ -4,6 +4,8 @@ export class GetAgentsUseCase {
   constructor(private agentGateway: AgentGateway) {}
 
   async execute() {
-    return this.agentGateway.getAll();
+    const agents = await this.agentGateway.getAll();
+
+    return { agents };
   }
 }
