@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 
 import { HttpAgentGateway } from '$core/infra/gateways/http-agent-gateway';
-import { FindByNameUseCase } from '$core/app/use-cases/agent/find-by-name-use-case';
+import { FindAgentByNameUseCase } from '$core/app/use-cases/agent/find-agent-by-name-use-case';
 
 const agentGateway = new HttpAgentGateway();
-const findByName = new FindByNameUseCase(agentGateway);
+const findByName = new FindAgentByNameUseCase(agentGateway);
 
 export default function Home() {
   useEffect(() => {

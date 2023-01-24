@@ -1,11 +1,11 @@
 import { AgentNotFoundError } from '$core/app/errors/agent-not-found';
 import { AgentGateway } from '$core/domain/gateways/agent-gateway';
 
-export class FindByNameUseCase {
+export class FindAgentByIdUseCase {
   constructor(private agentGateway: AgentGateway) {}
 
-  async execute(name: string) {
-    const agent = await this.agentGateway.findByName(name);
+  async execute(id: string) {
+    const agent = await this.agentGateway.findById(id);
 
     if (!agent) {
       throw new AgentNotFoundError();
