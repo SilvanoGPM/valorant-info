@@ -5,8 +5,11 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { Fonts } from '$styles/fonts';
 import { theme } from '$styles/theme';
 import { BackgroundImage } from '$components/background-image';
+import { useSplashScreen } from '$hooks/use-splash-screen';
 
 export default function App({ Component, pageProps }: AppProps) {
+  useSplashScreen('hide');
+
   return (
     <>
       <Head>
