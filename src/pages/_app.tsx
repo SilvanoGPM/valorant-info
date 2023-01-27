@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 import { Fonts } from '$styles/fonts';
 import { theme } from '$styles/theme';
+import { BackgroundImage } from '$components/background-image';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -14,6 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <ChakraProvider theme={theme}>
         <Fonts />
+        <BackgroundImage />
         <Component {...pageProps} />
       </ChakraProvider>
     </>
