@@ -3,7 +3,7 @@ import { Heading, HStack, Image, Tooltip } from '@chakra-ui/react';
 import type { AgentProps } from '$core/domain/entities/agent';
 
 interface RoleProps {
-  agent: Agent;
+  agent: AgentProps;
 }
 
 export function Role({ agent }: RoleProps) {

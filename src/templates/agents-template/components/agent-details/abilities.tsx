@@ -5,7 +5,7 @@ import type { AgentProps } from '$core/domain/entities/agent';
 import { glassmorphismContainer } from '$styles/tokens';
 
 interface AbilitiesProps {
-  agent: Agent;
+  agent: AgentProps;
 }
 
 export function Abilities({ agent }: AbilitiesProps) {

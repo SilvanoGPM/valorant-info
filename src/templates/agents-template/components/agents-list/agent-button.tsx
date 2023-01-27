@@ -4,7 +4,7 @@ import type { AgentProps } from '$core/domain/entities/agent';
 import { fillZero } from '$utils/fill-zero';
 
 interface AgentButtonProps {
-  agent: Agent;
+  agent: AgentProps;
   number: number;
   isActive: boolean;
   onClick: () => void;

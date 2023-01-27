@@ -7,7 +7,7 @@ import { Role } from './role';
 import { Abilities } from './abilities';
 
 interface AgentDetailsProps {
-  agent: Agent;
+  agent: AgentProps;
   showImage: boolean;
   onImageLoad: () => void;
 }

@@ -34,6 +34,6 @@ export async function makeHttp<T>({
   };
 }
 
-export async function http(params: HttpParams) {
-  return makeHttp({ baseURL: HOST, ...params });
+export async function http<T>(params: HttpParams) {
+  return makeHttp<T>({ baseURL: HOST, ...params });
 }

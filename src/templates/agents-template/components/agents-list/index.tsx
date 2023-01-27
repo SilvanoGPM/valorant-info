@@ -6,9 +6,9 @@ import { thinScrollbar } from '$styles/tokens';
 import { AgentButton } from './agent-button';
 
 interface AgentsListProps {
-  agents: Agent[];
-  selectedAgent: Agent;
-  selectAgent: (agent: Agent) => void;
+  agents: AgentProps[];
+  selectedAgent: AgentProps;
+  selectAgent: (agent: AgentProps) => void;
 }
 
 export function AgentsList({
@@ -16,7 +16,7 @@ export function AgentsList({
   selectedAgent,
   selectAgent,
 }: AgentsListProps) {
-  function handleSelectAgent(agent: Agent) {
+  function handleSelectAgent(agent: AgentProps) {
     return () => selectAgent(agent);
   }
 
