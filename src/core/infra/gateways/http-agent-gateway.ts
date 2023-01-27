@@ -37,11 +37,13 @@ interface GetAllResponse {
   data: RawAgent[];
 }
 
+const url = String(process.env.AGENTS_URL);
+
 type FindByPredicate = (agent: RawAgent) => boolean;
 
 export class HttpAgentGateway implements AgentGateway {
   async getAll() {
-    const response = await http<GetAllResponse>({ url: './data/agents.json' });
+    const response = await http<GetAllResponse>({ url });
 
     const agents = response.data.data;
 
@@ -60,7 +62,7 @@ export class HttpAgentGateway implements AgentGateway {
   }
 
   private async findBy(predicate: FindByPredicate) {
-    const response = await http<GetAllResponse>({ url: './data/agents.json' });
+    const response = await http<GetAllResponse>({ url });
 
     const agents = response.data.data;
 

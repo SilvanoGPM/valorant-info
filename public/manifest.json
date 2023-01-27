@@ -1,6 +1,6 @@
 {
-  "name": "Next Boilerplate",
-  "short_name": "Boilerplate",
+  "name": "Valorant Info",
+  "short_name": "Valorant",
   "icons": [
     {
       "src": "/icons/android-chrome-192x192.png",
@@ -13,9 +13,9 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#FFFFFF",
-  "description": "Boilerplate for NextJS projects",
-  "background_color": "#FFFFFF",
+  "theme_color": "#ff4655",
+  "background_color": "#111111",
+  "description": "Informações diversas sobre o jogo Valorant",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"

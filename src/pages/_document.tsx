@@ -11,8 +11,12 @@ export default function Document() {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-        <meta name="description" content="Boilerplate for NextJS projects" />
-        <meta name="theme-color" content="#FFFFFF" />
+        <meta
+          name="description"
+          content="Informações diversas sobre o jogo Valorant"
+        />
+
+        <meta name="theme-color" content="#ff4655" />
       </Head>
 
       <body>
