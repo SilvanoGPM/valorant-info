@@ -1,16 +1,21 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { ChakraProvider } from '@chakra-ui/react';
 
-function App({ Component, pageProps }: AppProps) {
+import { Fonts } from '$styles/fonts';
+import { theme } from '$styles/theme';
+
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Next Boilerplate</title>
+        <title>Valorant Info</title>
       </Head>
 
-      <Component {...pageProps} />
+      <ChakraProvider theme={theme}>
+        <Fonts />
+        <Component {...pageProps} />
+      </ChakraProvider>
     </>
   );
 }
-
-export default App;

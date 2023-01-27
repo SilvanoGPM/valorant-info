@@ -17,7 +17,7 @@ describe('Find agent by name use case', () => {
   });
 
   it('should not be able to find an agent when it does not exists', async () => {
-    const agentGateway = new InMemoryAgentGateway([makeAgent()]);
+    const agentGateway = new InMemoryAgentGateway();
 
     const findById = new FindAgentByNameUseCase(agentGateway);
 
