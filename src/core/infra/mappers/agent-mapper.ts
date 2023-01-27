@@ -7,6 +7,17 @@ import type {
 } from '../gateways/http-agent-gateway';
 
 export class AgentMapper {
+  static toJSON(agent: Agent) {
+    return {
+      id: agent.id,
+      name: agent.name,
+      description: agent.description,
+      images: agent.images,
+      role: agent.role,
+      abilities: agent.abilities,
+    };
+  }
+
   static toAgent(rawAgent: RawAgent) {
     return new Agent({
       id: rawAgent.uuid,

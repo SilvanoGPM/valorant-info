@@ -7,5 +7,4 @@ import { bindAgentUseCase } from './agent';
 export const container = new Container();
 
 bindGateways();
-
 bindAgentUseCase();

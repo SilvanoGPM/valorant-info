@@ -24,7 +24,7 @@ interface AgentImages {
   };
 }
 
-interface AgentProps {
+export interface AgentProps {
   id: string;
   name: string;
   description: string;
