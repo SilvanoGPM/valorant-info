@@ -1,19 +1,31 @@
 import { extendTheme } from '@chakra-ui/react';
 
 import { Tooltip } from './components/tooltip';
+import { Button } from './components/button';
 
 export const theme = extendTheme({
   components: {
     Tooltip,
+    Button,
   },
 
   colors: {
     brand: {
+      '900': '#c3000f',
+      '800': '#e30012',
+      '700': '#ff0419',
+      '600': '#ff2537',
       '500': '#ff4655',
+      '400': '#fe5865',
+      '300': '#ff6a76',
+      '200': '#ff7d87',
+      '100': '#fe9098',
+      '50': '#ffa2a9',
     },
 
     background: {
       '500': '#111111',
+      '300': '#404040',
     },
 
     backgroundAlpha: {
