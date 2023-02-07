@@ -1,16 +1,10 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Icon,
-  Link as ExternalLink,
-} from '@chakra-ui/react';
+import { Button, Flex, Icon, Link as ExternalLink } from '@chakra-ui/react';
 
 import { AiFillGithub } from 'react-icons/ai';
 
 import { ValorantIcon } from '$components/icons/valorant-icon';
-import { Link } from './link';
 
+import { Link } from './link';
 import { Navbar } from './navbar';
 
 export function Header() {
@@ -25,7 +19,13 @@ export function Header() {
       justify="space-between"
     >
       <Flex align="center">
-        <Link href="/" fontSize="3xl" _hover={{}} mr="16">
+        <Link
+          shouldShowUnderline={false}
+          href="/"
+          fontSize="3xl"
+          _hover={{}}
+          mr="16"
+        >
           <Icon as={ValorantIcon} />
         </Link>
 

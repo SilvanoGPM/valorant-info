@@ -5,7 +5,15 @@ import {
 
 import NextLink from 'next/link';
 
-export function Link({ href, ...props }: ChakraLinkProps) {
+interface LinkProps extends ChakraLinkProps {
+  shouldShowUnderline?: boolean;
+}
+
+export function Link({
+  href,
+  shouldShowUnderline = true,
+  ...props
+}: LinkProps) {
   return (
     <ChakraLink
       as={NextLink}
@@ -16,9 +24,28 @@ export function Link({ href, ...props }: ChakraLinkProps) {
       px="4"
       py="1"
       rounded="lg"
+      pos="relative"
       _hover={{
         textDecor: 'none',
         bg: 'background.300',
+      }}
+      sx={{
+        '&::after': {
+          content: "''",
+          display: 'block',
+          pos: 'absolute',
+          bottom: '-2',
+          left: '0',
+          bg: 'brand.500',
+          width: '0',
+          h: '4px',
+          transition: '0.2s ease-in-out width',
+          rounded: 'lg',
+        },
+
+        '&:hover::after': {
+          width: shouldShowUnderline ? 'full' : '0',
+        },
       }}
       {...props}
     />
