@@ -1,33 +1,20 @@
-<h1 align="center">Next Boilerplate</h1>
-<p align="center"> Boilerplate for NextJS projects</p>
+<h1 align="center">Valorant Info</h1>
+<p align="center">Informações diversas sobre o jogo Valorant</p>
 
-<p align="center">
-  <img src="public/icons/android-chrome-192x192.png" />
-</p>
+## 🚀 Tecnologias
 
-## ⚙️ Already configured
+- TypeScript
+- ReactJS
+- NextJS
+- Chakra UI
 
-- Typescript
-- Jest
-- React Testing Library
-- PWA Support
-- ESLint
-- Prettier
-- Editorconfig
-- Husky
+## :sparkles: Imagens
 
-## 🔨 How to use
+![image](https://user-images.githubusercontent.com/59753526/217694519-2e53f1b0-9a38-49ed-a1e3-d77dc0361d93.png)
+![image](https://user-images.githubusercontent.com/59753526/217694737-010cfea0-bb19-4a0f-86aa-336f249a1c1b.png)
 
-In terminal use:
 
-```bash
-# npm
-npx create-next-app -e https://github.com/SilvanoGPM/next-boilerplate
+## :heart: Agradecimentos
 
-# yarn
-yarn create next-app -e https://github.com/SilvanoGPM/next-boilerplate
-```
-
-## ❤️ Contributions
-
-Open a PR to contribute to the project.
+- [Valorant](https://playvalorant.com/pt-br/)
+- [API](https://valorant-api.com/)
