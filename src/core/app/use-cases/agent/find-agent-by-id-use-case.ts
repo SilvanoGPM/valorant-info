@@ -1,5 +1,5 @@
 import { AgentNotFoundError } from '$core/app/errors/agent-not-found';
-import { AgentGateway } from '$core/domain/gateways/agent-gateway';
+import type { AgentGateway } from '$core/domain/gateways/agent-gateway';
 
 export class FindAgentByIdUseCase {
   constructor(private agentGateway: AgentGateway) {}
