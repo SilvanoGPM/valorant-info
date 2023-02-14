@@ -18,3 +18,4 @@
 
 - [Valorant](https://playvalorant.com/pt-br/)
 - [API](https://valorant-api.com/)
+- [NextJS Clean Arch](https://www.youtube.com/watch?v=ewEFpEgaSdg)
