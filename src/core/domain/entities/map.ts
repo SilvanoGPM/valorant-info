@@ -1,10 +1,10 @@
 interface MapImages {
-  inGame: string;
+  inGame?: string;
   inList: string;
   splash: string;
 }
 
-interface MapProps {
+export interface MapProps {
   id: string;
   name: string;
   coordinates: string;
@@ -28,5 +28,9 @@ export class Map {
 
   public get images() {
     return this.props.images;
+  }
+
+  toJSON() {
+    return this.props;
   }
 }

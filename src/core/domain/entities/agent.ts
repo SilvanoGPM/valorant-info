@@ -59,4 +59,8 @@ export class Agent {
   public get abilities() {
     return this.props.abilities;
   }
+
+  toJSON() {
+    return this.props;
+  }
 }
