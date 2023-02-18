@@ -1,8 +1,8 @@
 import { GetStaticProps } from 'next';
 
 import type { GetMapsUseCase } from '$core/app/use-cases/map/get-maps-use-case';
+import type { MapProps } from '$core/domain/entities/map';
 import { container, Registry } from '$core/infra/container-registry';
-import { MapProps } from '$core/domain/entities/map';
 
 const getMaps = container.get<GetMapsUseCase>(Registry.GetMaps);
 
@@ -16,7 +16,7 @@ export default function Maps({ maps }: MapsProps) {
   return <></>;
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<MapsProps> = async () => {
   const { maps } = await getMaps.execute();
 
   const jsonMaps = maps.map((map) => map.toJSON());

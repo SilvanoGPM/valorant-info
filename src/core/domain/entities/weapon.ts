@@ -13,16 +13,16 @@ interface WeaponStats {
 interface WeaponShop {
   cost: number;
   category: {
-    type: string;
-    text: string;
+    type?: string | null;
+    text?: string | null;
   };
 }
 
 interface WeaponModification {
   id: string;
   name: string;
-  image?: string;
-  video?: string;
+  image?: string | null;
+  video?: string | null;
 }
 
 export interface WeaponSkin {
