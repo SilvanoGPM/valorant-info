@@ -1,13 +1,16 @@
 import { HStack } from '@chakra-ui/react';
 
-import { Link } from './link';
+import { NavLink } from './navbar-link';
 
 export function Navbar() {
   return (
     <HStack as="nav">
-      <Link href="/">Agentes</Link>
-      <Link href="/weapons">Armas</Link>
-      <Link href="/maps">Mapas</Link>
+      <NavLink href="/" shouldMatchExactHref>
+        Agentes
+      </NavLink>
+
+      <NavLink href="/weapons">Armas</NavLink>
+      <NavLink href="/maps">Mapas</NavLink>
     </HStack>
   );
 }
