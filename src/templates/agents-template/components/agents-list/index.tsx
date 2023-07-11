@@ -1,46 +1,23 @@
-import { VStack } from '@chakra-ui/react';
-import ScrollContainer from 'react-indiana-drag-scroll';
+import { SimpleGrid } from '@chakra-ui/react';
 
 import type { AgentProps } from '$core/domain/entities/agent';
-import { thinScrollbar } from '$styles/tokens';
-import { AgentButton } from './agent-button';
+import { AgentCard } from './agent-card';
 
 interface AgentsListProps {
   agents: AgentProps[];
-  selectedAgent: AgentProps;
-  selectAgent: (agent: AgentProps) => void;
 }
 
-export function AgentsList({
-  agents,
-  selectedAgent,
-  selectAgent,
-}: AgentsListProps) {
-  function handleSelectAgent(agent: AgentProps) {
-    return () => selectAgent(agent);
-  }
-
+export function AgentsList({ agents }: AgentsListProps) {
   return (
-    <VStack
-      as={ScrollContainer}
-      align="start"
-      spacing="0"
-      overflowY="auto"
-      sx={thinScrollbar}
+    <SimpleGrid
+      w="full"
+      spacing={4}
+      minChildWidth={{ base: '200px', sm: '280px' }}
+      justifyItems="center"
     >
-      {agents.map((agent, index) => {
-        const isActive = selectedAgent.name === agent.name;
-
-        return (
-          <AgentButton
-            onClick={handleSelectAgent(agent)}
-            key={agent.id}
-            agent={agent}
-            number={index}
-            isActive={isActive}
-          />
-        );
-      })}
-    </VStack>
+      {agents.map((agent, index) => (
+        <AgentCard key={agent.id} agent={agent} number={index} />
+      ))}
+    </SimpleGrid>
   );
 }

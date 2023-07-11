@@ -11,7 +11,7 @@ interface MapsProps {
 }
 
 export default function Maps({ maps }: MapsProps) {
-  console.log(maps);
+  log(maps);
 
   return <></>;
 }

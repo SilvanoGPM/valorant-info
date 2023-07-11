@@ -1,47 +1,38 @@
-import { Center, Flex, useBoolean } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Box, Center, Heading, Text } from '@chakra-ui/react';
 
 import type { AgentProps } from '$core/domain/entities/agent';
 import { glassmorphismContainer } from '$styles/tokens';
 
 import { AgentsList } from './components/agents-list';
-import { AgentDetails } from './components/agent-details';
+import { HighlightText } from '$components/highlight-text';
 
 export interface AgentsTemplateProps {
   agents: AgentProps[];
 }
 
 export function AgentsTemplate({ agents }: AgentsTemplateProps) {
-  const [showAgentImage, showAgentImageActions] = useBoolean(true);
-  const [selectedAgent, setSelectedAgent] = useState(agents[0]);
-
-  function handleSelectAgent(agent: AgentProps) {
-    showAgentImageActions.off();
-    setSelectedAgent(agent);
-  }
-
   return (
-    <Center h="100vh" mx="auto" p="4" maxW="1300px">
-      <Flex
-        maxH="500px"
-        justify="center"
+    <Center mx="auto" p="4" maxW="1300px">
+      <Center
         w="full"
-        sx={glassmorphismContainer()}
         p="8"
         rounded="lg"
+        flexDir="column"
+        sx={glassmorphismContainer()}
       >
-        <AgentsList
-          agents={agents}
-          selectedAgent={selectedAgent}
-          selectAgent={handleSelectAgent}
-        />
+        <Box textAlign="center" mb="8">
+          <Heading mb="4">Agentes</Heading>
 
-        <AgentDetails
-          agent={selectedAgent}
-          showImage={showAgentImage}
-          onImageLoad={showAgentImageActions.on}
-        />
-      </Flex>
+          <Text maxW="650px" color="gray.400">
+            Atualmente são{' '}
+            <HighlightText>{agents.length} personagens</HighlightText> para você
+            escolher com diversas funções e habilidades, além de cada um ter sua
+            função como Duelistas, Iniciadores, Controladores e Sentinelas.
+          </Text>
+        </Box>
+
+        <AgentsList agents={agents} />
+      </Center>
     </Center>
   );
 }
