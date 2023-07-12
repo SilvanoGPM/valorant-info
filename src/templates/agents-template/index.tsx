@@ -26,8 +26,8 @@ export function AgentsTemplate({ agents }: AgentsTemplateProps) {
           <Text maxW="650px" color="gray.400">
             Atualmente são{' '}
             <HighlightText>{agents.length} personagens</HighlightText> para você
-            escolher com diversas funções e habilidades, além de cada um ter sua
-            função como Duelistas, Iniciadores, Controladores e Sentinelas.
+            escolher, com diversas funções e habilidades, além de cada um ter
+            sua função como Duelistas, Iniciadores, Controladores e Sentinelas.
           </Text>
         </Box>
 

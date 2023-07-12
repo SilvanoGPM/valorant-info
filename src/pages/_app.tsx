@@ -1,15 +1,24 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ChakraProvider } from '@chakra-ui/react';
+import NextNProgress from 'nextjs-progressbar';
+import { Router } from 'next/router';
 
 import { Fonts } from '$styles/fonts';
 import { theme } from '$styles/theme';
 import { Header } from '$components/header';
 import { BackgroundImage } from '$components/background-image';
 import { useSplashScreen } from '$hooks/use-splash-screen';
+import { useUIStore } from '$stores/ui-store';
 
 export default function App({ Component, pageProps }: AppProps) {
+  const { closeNavbar } = useUIStore();
+
   useSplashScreen('hide');
+
+  Router.events.on('routeChangeComplete', () => {
+    closeNavbar();
+  });
 
   return (
     <>
@@ -18,6 +27,16 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <ChakraProvider theme={theme}>
+        <NextNProgress
+          color={theme.colors.brand['500']}
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={4}
+          options={{
+            showSpinner: false,
+          }}
+        />
+
         <Fonts />
         <BackgroundImage />
         <Header />

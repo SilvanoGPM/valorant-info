@@ -15,6 +15,7 @@ export function BackgroundImage() {
       alt="Valorant"
       filter="brightness(0.1)"
       zIndex="-1"
+      objectFit="cover"
       src={bgImg.src}
     />
   );

@@ -5,7 +5,7 @@ import {
 
 import NextLink from 'next/link';
 
-interface LinkProps extends ChakraLinkProps {
+export interface LinkProps extends ChakraLinkProps {
   shouldShowUnderline?: boolean;
 }
 

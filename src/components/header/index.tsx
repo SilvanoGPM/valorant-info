@@ -1,10 +1,8 @@
-import { Button, Flex, Icon, Link as ExternalLink } from '@chakra-ui/react';
-
-import { AiFillGithub } from 'react-icons/ai';
+import { Flex, Icon } from '@chakra-ui/react';
 
 import { ValorantIcon } from '$components/icons/valorant-icon';
+import { Link } from '$components/link';
 
-import { Link } from './link';
 import { Navbar } from './navbar';
 
 export function Header() {
@@ -28,23 +26,9 @@ export function Header() {
         >
           <Icon as={ValorantIcon} />
         </Link>
-
-        <Navbar />
       </Flex>
 
-      <Flex align="center">
-        <ExternalLink
-          href="https://github.com/SilvanoGPM/valorant-info"
-          target="_blank"
-          mr="4"
-        >
-          <Icon as={AiFillGithub} fontSize="3xl" />
-        </ExternalLink>
-
-        <ExternalLink href="https://playvalorant.com/pt-br" target="_blank">
-          <Button>Jogue agora</Button>
-        </ExternalLink>
-      </Flex>
+      <Navbar />
     </Flex>
   );
 }
