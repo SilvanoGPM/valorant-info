@@ -19,7 +19,7 @@ export function Navbar() {
       <>
         <Center
           as={Slide}
-          direction="top"
+          direction="right"
           in={navbarIsOpen}
           pos="absolute"
           top="0"

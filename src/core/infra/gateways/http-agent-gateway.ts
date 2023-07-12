@@ -1,4 +1,5 @@
 import { AgentGateway } from '$core/domain/gateways/agent-gateway';
+import { formatToURL } from '$utils/format-to-url';
 
 import { AgentMapper } from '../mappers/agent-mapper';
 import { http } from '../services/http';
@@ -55,10 +56,7 @@ export class HttpAgentGateway implements AgentGateway {
   }
 
   async findByName(name: string) {
-    return this.findBy(
-      (agent) =>
-        agent.displayName.toLocaleLowerCase() === name.toLocaleLowerCase(),
-    );
+    return this.findBy((agent) => formatToURL(agent.displayName) === name);
   }
 
   private async findBy(predicate: FindByPredicate) {
