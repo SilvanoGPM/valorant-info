@@ -18,5 +18,22 @@ export const Button = defineStyleConfig({
         filter: 'brightness(1.2)',
       },
     },
+
+    outline: {
+      bg: 'brandAlpha.100',
+      borderColor: 'brandAlpha.100',
+      color: 'white',
+      fontWeight: 'normal',
+
+      _hover: {
+        bg: 'brandAlpha.200',
+        borderColor: 'brandAlpha.200',
+      },
+
+      _active: {
+        bg: 'brandAlpha.300',
+        borderColor: 'brandAlpha.300',
+      },
+    },
   },
 });

@@ -16,7 +16,7 @@ export function NavbarContent({ isMobile }: NavbarContentProps) {
       spacing={isMobile ? 8 : 0}
       alignItems="center"
     >
-      <NavLink href="/" shouldMatchExactHref isMobile={isMobile}>
+      <NavLink href="/agents" isMobile={isMobile}>
         Agentes
       </NavLink>
 

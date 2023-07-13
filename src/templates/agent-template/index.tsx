@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Center, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 
 import { AgentProps } from '$core/domain/entities/agent';
 import { glassmorphismContainer } from '$styles/tokens';
@@ -18,36 +18,34 @@ export function AgentTemplate({ agent }: AgentTemplateProps) {
   const [tab, setTab] = useState('bio');
 
   return (
-    <Center mx="auto" p="4" maxW="1300px">
-      <Flex
-        w="full"
-        rounded="lg"
-        borderWidth="1px"
-        alignItems="stretch"
-        flexDir={{ base: 'column', lg: 'row' }}
-        sx={glassmorphismContainer()}
-      >
-        <AgentResume agent={agent} />
+    <Flex
+      w="full"
+      rounded="lg"
+      borderWidth="1px"
+      alignItems="stretch"
+      flexDir={{ base: 'column', lg: 'row' }}
+      sx={glassmorphismContainer()}
+    >
+      <AgentResume agent={agent} />
 
-        <Divider />
+      <Divider />
 
-        <Tabs
-          selectedTab={tab}
-          setSelectedTab={setTab}
-          tabs={[
-            {
-              name: 'bio',
-              text: 'Biografia',
-              screen: <Biography agent={agent} />,
-            },
-            {
-              name: 'abilities',
-              text: 'Habilidades',
-              screen: <Abilities agent={agent} />,
-            },
-          ]}
-        />
-      </Flex>
-    </Center>
+      <Tabs
+        selectedTab={tab}
+        setSelectedTab={setTab}
+        tabs={[
+          {
+            name: 'bio',
+            text: 'Biografia',
+            screen: <Biography agent={agent} />,
+          },
+          {
+            name: 'abilities',
+            text: 'Habilidades',
+            screen: <Abilities agent={agent} />,
+          },
+        ]}
+      />
+    </Flex>
   );
 }

@@ -1,6 +1,6 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ChakraProvider } from '@chakra-ui/react';
+import { Center, ChakraProvider } from '@chakra-ui/react';
 import NextNProgress from 'nextjs-progressbar';
 import { Router } from 'next/router';
 
@@ -40,7 +40,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <Fonts />
         <BackgroundImage />
         <Header />
-        <Component {...pageProps} />
+
+        <Center mx="auto" p="4" maxW="1300px">
+          <Component {...pageProps} />
+        </Center>
       </ChakraProvider>
     </>
   );

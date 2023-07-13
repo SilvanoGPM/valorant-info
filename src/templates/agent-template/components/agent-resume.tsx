@@ -27,7 +27,7 @@ export function AgentResume({ agent }: AgentTemplateProps) {
       pos="relative"
     >
       <Box pos="absolute" top="2" left="2">
-        <Link href="/">
+        <Link href="/agents">
           <IconButton
             aria-label="Voltar para agentes"
             color={`#${agent.images.background.gradient[0]}`}
