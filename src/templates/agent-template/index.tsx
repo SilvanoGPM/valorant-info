@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Center, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Center, Flex, Heading, Image, Text } from '@chakra-ui/react';
 
 import { AgentProps } from '$core/domain/entities/agent';
 import { glassmorphismContainer } from '$styles/tokens';
@@ -29,19 +29,20 @@ export function AgentTemplate({ agent }: AgentTemplateProps) {
 
   return (
     <Center mx="auto" p="4" maxW="1300px">
-      <Center
+      <Flex
         w="full"
         rounded="lg"
         borderWidth="1px"
-        sx={glassmorphismContainer({ showBorder: true })}
+        alignItems="stretch"
+        flexDir={{ base: 'column', lg: 'row' }}
+        sx={glassmorphismContainer()}
       >
         <Flex
           direction="column"
           p="8"
           align="center"
-          w="40%"
-          borderRightWidth="1px"
-          borderRightColor="whiteAlpha.300"
+          w={{ base: 'unset', lg: '40%' }}
+          borderColor="whiteAlpha.300"
         >
           <Heading
             bgGradient={`linear(to-r, #${agent.images.background.gradient[0]}, #${agent.images.background.gradient[1]})`}
@@ -61,12 +62,24 @@ export function AgentTemplate({ agent }: AgentTemplateProps) {
           <Image src={agent.images.full} objectFit="contain" />
         </Flex>
 
-        <Flex flex="1" direction="column" alignSelf="start">
+        <Box
+          w="1px"
+          bg="whiteAlpha.300"
+          display={{ base: 'none', lg: 'block' }}
+        />
+
+        <Flex
+          flex="1"
+          direction="column"
+          alignSelf="start"
+          borderTopWidth={{ base: '1px', lg: '0' }}
+          borderColor="whiteAlpha.300"
+        >
           <Choices selected={choice} setSelected={setChoice} />
 
           <Screen agent={agent} />
         </Flex>
-      </Center>
+      </Flex>
     </Center>
   );
 }

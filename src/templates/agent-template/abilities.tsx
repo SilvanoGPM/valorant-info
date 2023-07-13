@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Center,
   Heading,
@@ -38,7 +39,13 @@ export function Abilities({ agent }: AbilitiesProps) {
 
   return (
     <VStack flex="1" p="4" spacing="8">
-      <HStack>
+      <HStack
+        flexWrap="wrap"
+        align="center"
+        justify="center"
+        spacing={{ base: '0', lg: '4' }}
+        gap={{ base: '1rem', lg: 'unset' }}
+      >
         {agent.abilities
           .sort((a) => {
             if (a.slot === 'Grenade') {
@@ -95,24 +102,22 @@ export function Abilities({ agent }: AbilitiesProps) {
         <Center
           flexDirection="column"
           p="8"
+          w="full"
           rounded="lg"
           sx={glassmorphismContainer()}
         >
-          <Heading>{selectedAbility.name}</Heading>
+          <Heading textAlign="center">{selectedAbility.name}</Heading>
           <Text color="gray.400">{abilityText}</Text>
 
-          <Text
-            fontWeight="bold"
-            alignSelf="start"
-            textTransform="uppercase"
-            mt="8"
-          >
-            Descrição
-          </Text>
+          <Box alignSelf="start">
+            <Text fontWeight="bold" textTransform="uppercase" mt="8">
+              Descrição
+            </Text>
 
-          <Text color="gray.500" textAlign="justify">
-            {selectedAbility.description}
-          </Text>
+            <Text color="gray.500" textAlign="justify">
+              {selectedAbility.description}
+            </Text>
+          </Box>
         </Center>
       )}
     </VStack>
