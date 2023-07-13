@@ -1,31 +1,21 @@
 import { useState } from 'react';
-import { Box, Center, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { Center, Flex } from '@chakra-ui/react';
 
 import { AgentProps } from '$core/domain/entities/agent';
 import { glassmorphismContainer } from '$styles/tokens';
 
-import { Choices, MenuChoice } from './choices';
-import { Biography } from './bio';
-import { Abilities } from './abilities';
+import { Tabs } from './components/tabs';
+import { Biography } from './components/bio';
+import { Abilities } from './components/abilities';
+import { AgentResume } from './components/agent-resume';
+import { Divider } from './components/divider';
 
 export interface AgentTemplateProps {
   agent: AgentProps;
 }
 
-type ChoiceType = Record<
-  MenuChoice,
-  (props: { agent: AgentProps }) => JSX.Element
->;
-
-const choices: ChoiceType = {
-  bio: Biography,
-  abilities: Abilities,
-};
-
 export function AgentTemplate({ agent }: AgentTemplateProps) {
-  const [choice, setChoice] = useState<MenuChoice>('bio');
-
-  const Screen = choices[choice];
+  const [tab, setTab] = useState('bio');
 
   return (
     <Center mx="auto" p="4" maxW="1300px">
@@ -37,48 +27,26 @@ export function AgentTemplate({ agent }: AgentTemplateProps) {
         flexDir={{ base: 'column', lg: 'row' }}
         sx={glassmorphismContainer()}
       >
-        <Flex
-          direction="column"
-          p="8"
-          align="center"
-          w={{ base: 'unset', lg: '40%' }}
-          borderColor="whiteAlpha.300"
-        >
-          <Heading
-            bgGradient={`linear(to-r, #${agent.images.background.gradient[0]}, #${agent.images.background.gradient[1]})`}
-            bgClip="text"
-            fontWeight="black"
-          >
-            {agent.name}
-          </Heading>
+        <AgentResume agent={agent} />
 
-          <Center
-            bgGradient={`linear(to-b, #${agent.images.background.gradient[0]}, #${agent.images.background.gradient[1]})`}
-            bgClip="text"
-          >
-            <Text>{agent.role.name}</Text>
-          </Center>
+        <Divider />
 
-          <Image src={agent.images.full} objectFit="contain" />
-        </Flex>
-
-        <Box
-          w="1px"
-          bg="whiteAlpha.300"
-          display={{ base: 'none', lg: 'block' }}
+        <Tabs
+          selectedTab={tab}
+          setSelectedTab={setTab}
+          tabs={[
+            {
+              name: 'bio',
+              text: 'Biografia',
+              screen: <Biography agent={agent} />,
+            },
+            {
+              name: 'abilities',
+              text: 'Habilidades',
+              screen: <Abilities agent={agent} />,
+            },
+          ]}
         />
-
-        <Flex
-          flex="1"
-          direction="column"
-          alignSelf="start"
-          borderTopWidth={{ base: '1px', lg: '0' }}
-          borderColor="whiteAlpha.300"
-        >
-          <Choices selected={choice} setSelected={setChoice} />
-
-          <Screen agent={agent} />
-        </Flex>
       </Flex>
     </Center>
   );
