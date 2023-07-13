@@ -1,8 +1,22 @@
-import { Center, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Center,
+  Flex,
+  Heading,
+  Icon,
+  IconButton,
+  Image,
+  Text,
+} from '@chakra-ui/react';
+import Link from 'next/link';
+
+import { IoIosArrowBack } from 'react-icons/io';
 
 import { AgentTemplateProps } from '..';
 
 export function AgentResume({ agent }: AgentTemplateProps) {
+  const agentGradient = `#${agent.images.background.gradient[0]}, #${agent.images.background.gradient[1]}`;
+
   return (
     <Flex
       direction="column"
@@ -10,19 +24,28 @@ export function AgentResume({ agent }: AgentTemplateProps) {
       align="center"
       w={{ base: 'unset', lg: '40%' }}
       borderColor="whiteAlpha.300"
+      pos="relative"
     >
+      <Box pos="absolute" top="2" left="2">
+        <Link href="/">
+          <IconButton
+            aria-label="Voltar para agentes"
+            color={`#${agent.images.background.gradient[0]}`}
+            variant="unstyled"
+            icon={<Icon as={IoIosArrowBack} fontSize="4xl" />}
+          />
+        </Link>
+      </Box>
+
       <Heading
-        bgGradient={`linear(to-r, #${agent.images.background.gradient[0]}, #${agent.images.background.gradient[1]})`}
+        bgGradient={`linear(to-r, ${agentGradient})`}
         bgClip="text"
         fontWeight="black"
       >
         {agent.name}
       </Heading>
 
-      <Center
-        bgGradient={`linear(to-b, #${agent.images.background.gradient[0]}, #${agent.images.background.gradient[1]})`}
-        bgClip="text"
-      >
+      <Center bgGradient={`linear(to-b, ${agentGradient})`} bgClip="text">
         <Text>{agent.role.name}</Text>
       </Center>
 
