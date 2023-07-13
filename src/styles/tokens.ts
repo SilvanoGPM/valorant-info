@@ -1,16 +1,23 @@
 interface GlassmorphismContainerProps {
-  bg: string;
+  bg?: string;
   blur?: string;
+  showBorder?: boolean;
 }
 
 export function glassmorphismContainer(
-  { bg, blur = '5px' }: GlassmorphismContainerProps = {
+  {
+    bg = 'backgroundAlpha.300',
+    blur = '5px',
+    showBorder = true,
+  }: GlassmorphismContainerProps = {
     bg: 'backgroundAlpha.300',
   },
 ) {
   return {
     '&': {
       backdropFilter: `blur(${blur})`,
+      borderWidth: showBorder ? 1 : 0,
+      borderColor: 'whiteAlpha.300',
       boxShadow: 'dark-lg',
       bg,
     },

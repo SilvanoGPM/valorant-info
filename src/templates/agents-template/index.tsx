@@ -18,12 +18,12 @@ export function AgentsTemplate({ agents }: AgentsTemplateProps) {
         p="8"
         rounded="lg"
         flexDir="column"
-        sx={glassmorphismContainer()}
+        sx={glassmorphismContainer({ showBorder: false })}
       >
         <Box textAlign="center" mb="8">
           <Heading mb="4">Agentes</Heading>
 
-          <Text maxW="650px" color="gray.400">
+          <Text maxW="650px" color="gray.300">
             Atualmente são{' '}
             <HighlightText>{agents.length} personagens</HighlightText> para você
             escolher, com diversas funções e habilidades, além de cada um ter
