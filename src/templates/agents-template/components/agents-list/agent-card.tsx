@@ -32,6 +32,7 @@ export function AgentCard({ agent, number }: AgentCardProps) {
           top="0"
           left="0"
           zIndex="-1"
+          mt="2"
         >
           <Image src={agent.images.full} objectFit="contain" />
         </Box>

@@ -17,7 +17,17 @@ export default function Home(props: AgentsTemplateProps) {
 export const getStaticProps: GetStaticProps<AgentsTemplateProps> = async () => {
   const { agents } = await getAgents.execute();
 
-  const jsonAgents = agents.map((agent) => agent.toJSON());
+  const jsonAgents = agents
+    .map((agent) => agent.toJSON())
+    .sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    });
 
   return {
     props: { agents: jsonAgents },

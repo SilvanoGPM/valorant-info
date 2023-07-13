@@ -49,7 +49,7 @@ export function AgentResume({ agent }: AgentTemplateProps) {
         <Text>{agent.role.name}</Text>
       </Center>
 
-      <Image src={agent.images.full} objectFit="contain" />
+      <Image src={agent.images.full} objectFit="contain" mt="2" />
     </Flex>
   );
 }
