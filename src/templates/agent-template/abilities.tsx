@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import {
   Box,
   Button,
@@ -11,7 +13,6 @@ import {
 
 import { Ability, AgentProps } from '$core/domain/entities/agent';
 import { glassmorphismContainer } from '$styles/tokens';
-import { useState } from 'react';
 
 interface AbilitiesProps {
   agent: AgentProps;
@@ -31,6 +32,32 @@ export function Abilities({ agent }: AbilitiesProps) {
   const [selectedAbility, setSelectedAbility] = useState<Ability | undefined>(
     undefined,
   );
+
+  useEffect(() => {
+    const abilities = agent.abilities.map((ability) => {
+      const key = keys[ability.slot as Slot].key;
+
+      return { key, ability };
+    });
+
+    function onKeyPress(event: KeyboardEvent) {
+      const keyPressed = event.key.toUpperCase();
+
+      const foundAbility = abilities.find(
+        (ability) => ability.key === keyPressed,
+      );
+
+      if (foundAbility) {
+        setSelectedAbility(foundAbility.ability);
+      }
+    }
+
+    window.addEventListener('keypress', onKeyPress);
+
+    return () => {
+      window.removeEventListener('keypress', onKeyPress);
+    };
+  }, [agent]);
 
   const keyGradient = `#${agent.images.background.gradient[0]}, #${agent.images.background.gradient[1]}`;
 
