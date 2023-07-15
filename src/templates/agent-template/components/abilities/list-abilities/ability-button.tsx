@@ -18,6 +18,10 @@ export function AbilityButton({
   isActive,
   keyText,
 }: AbilityButtonProps) {
+  if (!ability.icon) {
+    return null;
+  }
+
   const activeStyle = isActive ? { bg: 'whiteAlpha.200' } : {};
 
   return (

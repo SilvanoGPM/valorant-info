@@ -11,8 +11,6 @@ interface WeaponsProps {
 }
 
 export default function Weapons({ weapons }: WeaponsProps) {
-  console.log(weapons);
-
   return <></>;
 }
 

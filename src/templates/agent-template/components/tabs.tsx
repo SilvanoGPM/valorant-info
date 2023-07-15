@@ -17,7 +17,6 @@ export function Tabs({ selectedTab, setSelectedTab, tabs }: TabsProps) {
     <Flex
       flex="1"
       direction="column"
-      alignSelf="start"
       borderTopWidth={{ base: '1px', lg: '0' }}
       borderColor="whiteAlpha.300"
     >

@@ -27,7 +27,10 @@ export function Abilities({ agent }: AbilitiesProps) {
         setSelectedAbility={setSelectedAbility}
       />
 
-      <SelectedAbility selectedAbility={selectedAbility} />
+      <SelectedAbility
+        selectedAbility={selectedAbility}
+        agentName={agent.name}
+      />
     </VStack>
   );
 }
