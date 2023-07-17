@@ -1,7 +1,8 @@
-import { useBreakpointValue } from '@chakra-ui/react';
+import { useState } from 'react';
 
 import { Slide, Slider, SlideSettings } from '$components/slider';
 import { WeaponProps } from '$core/domain/entities/weapon';
+import { useEventListener } from '$hooks/use-event-listener';
 
 import { WeaponCard } from './weapon-card';
 
@@ -9,10 +10,13 @@ interface WeaponSliderProps {
   weapon: WeaponProps;
 }
 
+const MIN_WIDTH_TO_SHOW_PAGINATION = 700;
+
 export function WeaponSlider({ weapon }: WeaponSliderProps) {
-  const sliderClassName = useBreakpointValue({
-    base: 'show-buttons',
-    lg: '',
+  const [showPagination, setShowPagination] = useState(true);
+
+  useEventListener('resize', () => {
+    setShowPagination(window.screen.width > MIN_WIDTH_TO_SHOW_PAGINATION);
   });
 
   const sliderSettings: SlideSettings = {
@@ -21,18 +25,15 @@ export function WeaponSlider({ weapon }: WeaponSliderProps) {
     navigation: true,
     draggable: true,
     loop: true,
-    pagination: {
-      clickable: true,
-    },
-    className: sliderClassName,
+    pagination: showPagination
+      ? {
+          clickable: true,
+        }
+      : undefined,
   };
 
   return (
-    <Slider
-      key={weapon.id}
-      settings={sliderSettings}
-      style={{ height: '100%', width: '100%' }}
-    >
+    <Slider key={weapon.id} settings={sliderSettings} h="full" w="full">
       <Slide>
         <WeaponCard
           name={weapon.name}

@@ -2,6 +2,7 @@ import { Box, Center, Heading, Text } from '@chakra-ui/react';
 
 import type { WeaponProps } from '$core/domain/entities/weapon';
 import { glassmorphismContainer } from '$styles/tokens';
+
 import { HighlightText } from '$components/highlight-text';
 import { WeaponsList } from './components/weapons-list';
 
