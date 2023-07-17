@@ -11,6 +11,8 @@ import { BackgroundImage } from '$components/background-image';
 import { useSplashScreen } from '$hooks/use-splash-screen';
 import { useUIStore } from '$stores/ui-store';
 
+import '../styles/global.css';
+
 export default function App({ Component, pageProps }: AppProps) {
   const { closeNavbar } = useUIStore();
 

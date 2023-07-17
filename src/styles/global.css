@@ -1,0 +1,71 @@
+.swiper {
+  padding: 32px;
+  position: relative;
+}
+
+.swiper-pagination.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: unset;
+  padding: 0 8px 16px;
+  height: 0;
+  width: 100%;
+}
+
+.swiper-slide.swiper-slide {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet {
+  background: white;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.5rem;
+  opacity: 0.3;
+}
+
+.swiper-pagination-bullet-active.swiper-pagination-bullet-active {
+  background-color: var(--chakra-colors-brand-500);
+  opacity: 0.5;
+}
+
+.swiper.show-buttons
+  :is(.swiper-button-prev.swiper-button-prev, .swiper-button-next.swiper-button-next) {
+  border-radius: 50%;
+  height: 50px;
+  opacity: 1;
+  position: absolute;
+  top: 70px;
+  width: 50px;
+}
+
+.swiper-button-prev.swiper-button-prev,
+.swiper-button-next.swiper-button-next {
+  color: var(--chakra-colors-brand-500);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--chakra-colors-brand-500);
+  width: 60px;
+  height: 80%;
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: 0.2s ease-in-out;
+}
+
+.swiper:hover .swiper-button-prev.swiper-button-prev,
+.swiper:hover .swiper-button-next.swiper-button-next {
+  opacity: 0.8;
+}
+
+.swiper-button-prev.swiper-button-prev:focus,
+.swiper-button-next.swiper-button-next:focus {
+  outline: 1px solid var(--chakra-colors-brand-500);
+}
+
+.swiper-button-next.swiper-button-next::after,
+.swiper-button-prev.swiper-button-prev::after {
+  font-size: 2rem;
+}

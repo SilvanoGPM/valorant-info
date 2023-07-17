@@ -1,23 +1,32 @@
 import { GetStaticProps } from 'next';
 
-import type { WeaponProps } from '$core/domain/entities/weapon';
 import type { GetWeaponsUseCase } from '$core/app/use-cases/weapon/get-weapons-use-case';
 import { container, Registry } from '$core/infra/container-registry';
+import {
+  WeaponsTemplate,
+  WeaponsTemplateProps,
+} from '../templates/weapons-template';
+import { Weapon } from '$core/domain/entities/weapon';
 
 const getWeapons = container.get<GetWeaponsUseCase>(Registry.GetWeapons);
 
-interface WeaponsProps {
-  weapons: WeaponProps[];
+export default function Weapons(props: WeaponsTemplateProps) {
+  return <WeaponsTemplate {...props} />;
 }
 
-export default function Weapons({ weapons }: WeaponsProps) {
-  return <></>;
-}
-
-export const getStaticProps: GetStaticProps<WeaponsProps> = async () => {
+export const getStaticProps: GetStaticProps<
+  WeaponsTemplateProps
+> = async () => {
   const { weapons } = await getWeapons.execute();
 
-  const jsonWeapons = weapons.map((weapon) => weapon.toJSON());
+  const jsonWeapons = weapons.map((weapon) => {
+    const skins = weapon.skins.filter(
+      (skin) =>
+        !(skin.name.includes('Padrão') || skin.name.includes('aleatória')),
+    );
+
+    return new Weapon({ ...weapon.toJSON(), skins }).toJSON();
+  });
 
   return {
     props: { weapons: jsonWeapons },

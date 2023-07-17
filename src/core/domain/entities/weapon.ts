@@ -3,7 +3,7 @@ interface WeaponImages {
   killfeed: string;
 }
 
-interface WeaponStats {
+export interface WeaponStats {
   fireRate: number;
   magazineSize: number;
   runSpeedMultiplier: number;
