@@ -12,9 +12,10 @@ import { Divider } from './components/divider';
 
 export interface AgentTemplateProps {
   agent: AgentProps;
+  number: number;
 }
 
-export function AgentTemplate({ agent }: AgentTemplateProps) {
+export function AgentTemplate({ agent, number }: AgentTemplateProps) {
   const [tab, setTab] = useState('bio');
 
   return (
@@ -26,7 +27,7 @@ export function AgentTemplate({ agent }: AgentTemplateProps) {
       flexDir={{ base: 'column', lg: 'row' }}
       sx={glassmorphismContainer()}
     >
-      <AgentResume agent={agent} />
+      <AgentResume number={number} agent={agent} />
 
       <Divider />
 

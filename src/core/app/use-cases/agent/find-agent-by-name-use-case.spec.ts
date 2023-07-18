@@ -11,9 +11,10 @@ describe('Find agent by name use case', () => {
 
     const findByName = new FindAgentByNameUseCase(agentGateway);
 
-    const { agent } = await findByName.execute(makeAgent().name);
+    const { agent, number } = await findByName.execute(makeAgent().name);
 
     expect(agent).toBeInstanceOf(Agent);
+    expect(number).toBeGreaterThan(0);
   });
 
   it('should not be able to find an agent when it does not exists', async () => {

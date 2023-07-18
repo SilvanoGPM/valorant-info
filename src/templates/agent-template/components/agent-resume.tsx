@@ -1,3 +1,4 @@
+import { fillZero } from '$utils/fill-zero';
 import {
   Box,
   Center,
@@ -14,7 +15,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 
 import { AgentTemplateProps } from '..';
 
-export function AgentResume({ agent }: AgentTemplateProps) {
+export function AgentResume({ agent, number }: AgentTemplateProps) {
   const agentGradient = `#${agent.images.background.gradient[0]}, #${agent.images.background.gradient[1]}`;
 
   return (
@@ -26,6 +27,18 @@ export function AgentResume({ agent }: AgentTemplateProps) {
       borderColor="whiteAlpha.300"
       pos="relative"
     >
+      <Box pos="absolute" zIndex="-1" opacity="0.3" top="55px">
+        <Text
+          fontSize="9xl"
+          color="background.500"
+          fontWeight="bold"
+          textShadow={`-1px -1px 0 #${agent.images.background.gradient[0]}, 1px -1px 0 #${agent.images.background.gradient[1]},
+    -1px 1px 0 #${agent.images.background.gradient[0]}, 1px 1px 0 #${agent.images.background.gradient[1]}`}
+        >
+          {fillZero(number)}
+        </Text>
+      </Box>
+
       <Box pos="absolute" top="2" left="2">
         <Link href="/agents">
           <IconButton

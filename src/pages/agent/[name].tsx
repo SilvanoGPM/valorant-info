@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<AgentTemplateProps> = async ({
   const { name } = params as { name: string };
 
   try {
-    const { agent } = await findAgentByName.execute(name);
+    const { agent, number } = await findAgentByName.execute(name);
 
     const sortedAbilities = agent.abilities.sort((a) => {
       if (a.slot === 'Grenade') {
@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps<AgentTemplateProps> = async ({
     });
 
     return {
-      props: { agent: sortedAgent.toJSON() },
+      props: { agent: sortedAgent.toJSON(), number },
       revalidate: 60 * 60 * 24 * 7, // one week
     };
   } catch (e) {

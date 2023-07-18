@@ -7,6 +7,7 @@ import {
 
 import type { GetAgentsUseCase } from '$core/app/use-cases/agent/get-agents-use-case';
 import { container, Registry } from '$core/infra/container-registry';
+import { agentByName } from '$utils/sort-agent-by-name';
 
 const getAgents = container.get<GetAgentsUseCase>(Registry.GetAgents);
 
@@ -17,17 +18,7 @@ export default function Agents(props: AgentsTemplateProps) {
 export const getStaticProps: GetStaticProps<AgentsTemplateProps> = async () => {
   const { agents } = await getAgents.execute();
 
-  const jsonAgents = agents
-    .map((agent) => agent.toJSON())
-    .sort((a, b) => {
-      if (a.name < b.name) {
-        return -1;
-      }
-      if (a.name > b.name) {
-        return 1;
-      }
-      return 0;
-    });
+  const jsonAgents = agents.map((agent) => agent.toJSON()).sort(agentByName);
 
   return {
     props: { agents: jsonAgents },

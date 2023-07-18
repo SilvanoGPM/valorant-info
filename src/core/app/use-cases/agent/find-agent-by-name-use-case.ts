@@ -12,6 +12,8 @@ export class FindAgentByNameUseCase {
       throw new AgentNotFoundError();
     }
 
-    return { agent };
+    const number = await this.agentGateway.findNumberOfAgent(agent);
+
+    return { agent, number };
   }
 }

@@ -19,6 +19,12 @@ export class InMemoryAgentGateway implements AgentGateway {
     return this.findBy((agent) => formatToURL(agent.name) === name);
   }
 
+  async findNumberOfAgent(agent: Agent) {
+    return (
+      this.agents.findIndex((innerAgent) => innerAgent.id === agent.id) + 1
+    );
+  }
+
   private async findBy(predicate: FindByPredicate) {
     const agent = this.agents.find(predicate);
 

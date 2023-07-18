@@ -1,5 +1,7 @@
+import { Agent } from '$core/domain/entities/agent';
 import { AgentGateway } from '$core/domain/gateways/agent-gateway';
 import { formatToURL } from '$utils/format-to-url';
+import { agentByName } from '$utils/sort-agent-by-name';
 
 import { AgentMapper } from '../mappers/agent-mapper';
 import { http } from '../services/http';
@@ -43,12 +45,17 @@ const url = String(process.env.AGENTS_URL);
 type FindByPredicate = (agent: RawAgent) => boolean;
 
 export class HttpAgentGateway implements AgentGateway {
+  private cachedAgents: Agent[] = [];
+
   async getAll() {
     const response = await http<GetAllResponse>({ url });
 
     const agents = response.data.data;
+    const mappedAgents = agents.map(AgentMapper.toAgent).sort(agentByName);
 
-    return agents.map(AgentMapper.toAgent);
+    this.cachedAgents = mappedAgents;
+
+    return mappedAgents;
   }
 
   async findById(id: string) {
@@ -57,6 +64,17 @@ export class HttpAgentGateway implements AgentGateway {
 
   async findByName(name: string) {
     return this.findBy((agent) => formatToURL(agent.displayName) === name);
+  }
+
+  async findNumberOfAgent(agent: Agent) {
+    if (this.cachedAgents.length === 0) {
+      this.cachedAgents = await this.getAll();
+    }
+
+    return (
+      this.cachedAgents.findIndex((innerAgent) => innerAgent.id === agent.id) +
+      1
+    );
   }
 
   private async findBy(predicate: FindByPredicate) {
