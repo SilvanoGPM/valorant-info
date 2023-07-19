@@ -4,10 +4,10 @@ interface WeaponImages {
 }
 
 export interface WeaponStats {
-  fireRate: number;
-  magazineSize: number;
-  runSpeedMultiplier: number;
-  firstBulletAccurancy: number;
+  fireRate?: number;
+  magazineSize?: number;
+  runSpeedMultiplier?: number;
+  firstBulletAccurancy?: number;
 }
 
 interface WeaponShop {
