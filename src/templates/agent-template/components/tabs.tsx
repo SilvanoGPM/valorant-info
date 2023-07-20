@@ -1,60 +1,45 @@
-import { Button, ButtonGroup, Flex } from '@chakra-ui/react';
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 
-interface TabsProps {
-  tabs: Array<{ name: string; text: string; screen: JSX.Element }>;
-  selectedTab: string;
-  setSelectedTab: (selectedTab: string) => void;
+import { AgentProps } from '$core/domain/entities/agent';
+
+import { Abilities } from './abilities';
+import { Biography } from './bio';
+
+interface AgentTabsProps {
+  agent: AgentProps;
 }
 
-export function Tabs({ selectedTab, setSelectedTab, tabs }: TabsProps) {
-  function selectTab(choice: string) {
-    setSelectedTab(choice);
-  }
-
-  const SelectedTab = tabs.find((tab) => tab.name === selectedTab)?.screen;
-
+export function AgentTabs({ agent }: AgentTabsProps) {
   return (
-    <Flex
+    <Tabs
+      isFitted
+      variant="unstyled"
       flex="1"
-      direction="column"
-      borderTopWidth={{ base: '1px', lg: '0' }}
       borderColor="whiteAlpha.300"
+      borderTopWidth={{ base: '1px', lg: '0' }}
     >
-      <ButtonGroup
-        variant="unstyled"
-        spacing="0"
-        w="full"
-        justifyContent="space-around"
-        overflow="hidden"
-        borderBottomWidth="1px"
-        borderBottomColor="whiteAlpha.300"
-      >
-        {tabs.map((tab, index) => {
-          const isActive = selectedTab === tab.name;
-          const isLast = index === tabs.length - 1;
+      <TabList borderBottom="1px" borderColor="whiteAlpha.300">
+        <Tab
+          _selected={{ bg: 'whiteAlpha.100', fontWeight: 'black' }}
+          borderRight="1px"
+          borderColor="whiteAlpha.300"
+        >
+          Biografia
+        </Tab>
 
-          const activeStyle = isActive
-            ? { fontWeight: 'bold', bg: 'whiteAlpha.100' }
-            : {};
+        <Tab _selected={{ bg: 'whiteAlpha.100', fontWeight: 'black' }}>
+          Habilidades
+        </Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>
+          <Biography agent={agent} />
+        </TabPanel>
 
-          return (
-            <Button
-              key={tab.name}
-              onClick={() => selectTab(tab.name)}
-              flex="1"
-              rounded="none"
-              textTransform="uppercase"
-              borderRightWidth={isLast ? '0' : '1px'}
-              borderRightColor="whiteAlpha.300"
-              {...activeStyle}
-            >
-              {tab.text}
-            </Button>
-          );
-        })}
-      </ButtonGroup>
-
-      {SelectedTab}
-    </Flex>
+        <TabPanel>
+          <Abilities agent={agent} />
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
   );
 }

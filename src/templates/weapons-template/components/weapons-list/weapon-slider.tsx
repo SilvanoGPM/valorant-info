@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import { useEventListener } from '@chakra-ui/react';
 
 import { Slide, Slider, SlideSettings } from '$components/slider';
 import { WeaponProps } from '$core/domain/entities/weapon';
-import { useEventListener } from '$hooks/use-event-listener';
 
 import { WeaponCard } from './weapon-card';
 

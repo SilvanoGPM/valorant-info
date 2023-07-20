@@ -1,9 +1,7 @@
 import {
   Link as ChakraLink,
   LinkProps as ChakraLinkProps,
-} from '@chakra-ui/react';
-
-import NextLink from 'next/link';
+} from '@chakra-ui/next-js';
 
 export interface LinkProps extends ChakraLinkProps {
   shouldShowUnderline?: boolean;
@@ -16,7 +14,6 @@ export function Link({
 }: LinkProps) {
   return (
     <ChakraLink
-      as={NextLink}
       href={href}
       textTransform="uppercase"
       fontWeight="600"

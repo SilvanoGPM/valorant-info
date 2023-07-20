@@ -1,14 +1,11 @@
-import { useState } from 'react';
 import { Flex } from '@chakra-ui/react';
 
 import { AgentProps } from '$core/domain/entities/agent';
 import { glassmorphismContainer } from '$styles/tokens';
 
-import { Tabs } from './components/tabs';
-import { Biography } from './components/bio';
-import { Abilities } from './components/abilities';
 import { AgentResume } from './components/agent-resume';
 import { Divider } from './components/divider';
+import { AgentTabs } from './components/tabs';
 
 export interface AgentTemplateProps {
   agent: AgentProps;
@@ -16,8 +13,6 @@ export interface AgentTemplateProps {
 }
 
 export function AgentTemplate({ agent, number }: AgentTemplateProps) {
-  const [tab, setTab] = useState('bio');
-
   return (
     <Flex
       w="full"
@@ -31,22 +26,7 @@ export function AgentTemplate({ agent, number }: AgentTemplateProps) {
 
       <Divider />
 
-      <Tabs
-        selectedTab={tab}
-        setSelectedTab={setTab}
-        tabs={[
-          {
-            name: 'bio',
-            text: 'Biografia',
-            screen: <Biography agent={agent} />,
-          },
-          {
-            name: 'abilities',
-            text: 'Habilidades',
-            screen: <Abilities agent={agent} />,
-          },
-        ]}
-      />
+      <AgentTabs agent={agent} />
     </Flex>
   );
 }
