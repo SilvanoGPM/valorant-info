@@ -17,6 +17,7 @@ export function BackgroundImage() {
       zIndex="-1"
       objectFit="cover"
       src={bgImg.src}
+      data-testid="background-image"
     />
   );
 }
