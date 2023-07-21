@@ -15,6 +15,7 @@ export function Header() {
       px="8"
       align="center"
       justify="space-between"
+      data-testid="header"
     >
       <Flex align="center">
         <Link
