@@ -15,8 +15,15 @@ export function Content() {
           Nosso conteúdo
         </Heading>
 
+        <Card
+          title="Agentes"
+          text="Conheça tudo sobre os agentes."
+          link="agents"
+          image={agentsImg.src}
+        />
+
         <Flex
-          mb={{ base: '8rem', lg: '32' }}
+          mt={{ base: '8rem', lg: '32' }}
           gap={{ base: '8rem', lg: '1rem' }}
           direction={{ base: 'column', lg: 'row' }}
         >
@@ -39,13 +46,6 @@ export function Content() {
             }}
           />
         </Flex>
-
-        <Card
-          title="Agentes"
-          text="Conheça tudo sobre os agentes."
-          link="agents"
-          image={agentsImg.src}
-        />
       </Flex>
     </>
   );
