@@ -17,7 +17,7 @@ import {
   BsFillVolumeMuteFill,
 } from 'react-icons/bs';
 
-import { getAbilityVideoSrc } from '$utils/get-ability-video-src';
+import { getAbilityVideoSrc, Key } from '$utils/get-ability-video-src';
 import { ExternalLink } from '$components/external-link';
 
 interface VideoProps {
@@ -39,7 +39,7 @@ export function Video({ abilityKey, agentName }: VideoProps) {
 
   const src = getAbilityVideoSrc({
     agentName,
-    key: abilityKey,
+    key: abilityKey as Key,
   });
 
   return (

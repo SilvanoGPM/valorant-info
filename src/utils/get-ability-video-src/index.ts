@@ -1,8 +1,10 @@
-import { formatToURL } from './format-to-url';
+import { formatToURL } from '../format-to-url';
+
+export type Key = 'C' | 'Q' | 'E' | 'X';
 
 interface GetAbilityVideoSrcParams {
   agentName: string;
-  key: string;
+  key: Key;
 }
 
 type SpecialCase = Record<
@@ -58,7 +60,7 @@ const specialCases: SpecialCase = {
   },
 };
 
-function getVideoPath(agentName: string, key: string): string {
+function getVideoPath(agentName: string, key: Key): string {
   const specialCase = specialCases[agentName as keyof typeof specialCases];
 
   if (specialCase) {
