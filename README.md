@@ -8,10 +8,6 @@
 - NextJS
 - Chakra UI
 
-## 🎯 Objetivo
-
-Valorant Info é um site desenvolvido com base nas ideias de Clean Architecture no Front-End, dedicado a fornecer informações abrangentes sobre o jogo Valorant. Com um design limpo e intuitivo, o site oferece dados detalhados sobre personagens, armas, mapas, entre outros. Combinando uma estrutura sólida e uma experiência do usuário otimizada, Valorant Info é o destino ideal para jogadores que desejam ficar atualizados e aprimorar seu desempenho no jogo.
-
 ## :sparkles: Imagens
 
 ![image](https://github.com/SilvanoGPM/valorant-info/assets/59753526/22d0d4ca-8235-4d9f-9eef-32c03ede867e)
