@@ -1,4 +1,5 @@
 import { fillZero } from '$utils/fill-zero';
+
 import {
   Box,
   Center,
@@ -8,15 +9,29 @@ import {
   IconButton,
   Image,
   Text,
+  keyframes,
+  usePrefersReducedMotion,
 } from '@chakra-ui/react';
+
 import Link from 'next/link';
 
 import { IoIosArrowBack } from 'react-icons/io';
 
 import { AgentTemplateProps } from '..';
 
+const textShine = keyframes`
+  from { background-position: 100%; }
+  to { background-position: 0%; }
+`;
+
 export function AgentResume({ agent, number }: AgentTemplateProps) {
   const agentGradient = `#${agent.images.background.gradient[0]}, #${agent.images.background.gradient[1]}`;
+
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  const nameAnimation = prefersReducedMotion
+    ? undefined
+    : `${textShine} 5s ease-in-out infinite alternate`;
 
   return (
     <Flex
@@ -52,8 +67,10 @@ export function AgentResume({ agent, number }: AgentTemplateProps) {
 
       <Heading
         bgGradient={`linear(to-r, ${agentGradient})`}
+        bgSize="500% auto"
         bgClip="text"
         fontWeight="black"
+        animation={nameAnimation}
       >
         {agent.name}
       </Heading>
