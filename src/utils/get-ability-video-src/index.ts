@@ -58,6 +58,13 @@ const specialCases: SpecialCase = {
     E: 'Yoru_Rework_Gatecrash_E',
     X: 'Yoru_Rework_Dimensional_Drift_X',
   },
+
+  Iso: {
+    C: 'Iso_Ability_C',
+    Q: 'Iso_Ability_Q',
+    E: 'Iso_Ability_E',
+    X: 'Iso_Ability_X-Larger',
+  },
 };
 
 function getVideoPath(agentName: string, key: Key): string {
