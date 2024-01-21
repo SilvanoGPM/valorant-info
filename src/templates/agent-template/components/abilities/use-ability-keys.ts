@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { Ability, AgentProps } from '$core/domain/entities/agent';
 
-import { keys, Slot } from './keys';
+import { keys, Slot } from '$utils/sort-ability-by-name';
 
 export function useAbilityKeys(
   agent: AgentProps,

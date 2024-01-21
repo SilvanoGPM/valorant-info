@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
+    "dev:test": "next dev --port 50789",
     "build": "next build",
     "start": "next start",
     "lint": "eslint src --max-warnings=0",
     "prepare": "husky install",
     "test": "jest",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "npm run test:e2e -- --ui",
+    "test:e2e:report": "playwright show-report"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.1.5",
@@ -32,6 +36,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.16.7",
     "@next/eslint-plugin-next": "^12.1.6",
+    "@playwright/test": "^1.41.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@types/jest": "^27.4.1",
@@ -39,6 +44,7 @@
     "@types/react": "^18.0.8",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
+    "cross-env": "^7.0.3",
     "eslint": "8.14.0",
     "eslint-config-next": "^13.1.2",
     "eslint-config-prettier": "^8.5.0",

@@ -5,6 +5,7 @@ export function Additional() {
   return (
     <Flex align="center">
       <Link
+        aria-label="Github"
         href="https://github.com/SilvanoGPM/valorant-info"
         target="_blank"
         mr="4"

@@ -2,9 +2,9 @@ import { HStack } from '@chakra-ui/react';
 
 import { Ability } from '$core/domain/entities/agent';
 
-import { getKey } from '../keys';
 import { AbilitiesProps } from '..';
 import { AbilityButton } from './ability-button';
+import { abilityByName, getKey } from '$utils/sort-ability-by-name';
 
 interface ListAbilitiesProps extends AbilitiesProps {
   selectedAbility?: Ability;
@@ -26,7 +26,7 @@ export function ListAbilities({
       spacing={{ base: '0', lg: '4' }}
       gap={{ base: '1rem', lg: 'unset' }}
     >
-      {agent.abilities.map((ability) => {
+      {agent.abilities.sort(abilityByName).map((ability) => {
         const isActive = selectedAbility?.name === ability.name;
         const keyText = getKey(ability.slot).key;
 

@@ -44,7 +44,7 @@ export function Card({ title, text, link, image, imageProps }: CardProps) {
         <Heading>{title}</Heading>
         <Text color="gray.500">{text}</Text>
 
-        <Link href={`/${link}`}>
+        <Link href={`/${link}`} data-testid={link}>
           <Button size="lg" variant="outline" mt="8">
             Visualizar
           </Button>

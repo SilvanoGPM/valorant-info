@@ -3,8 +3,8 @@ import { Box, Center, Heading, Text } from '@chakra-ui/react';
 import { Ability } from '$core/domain/entities/agent';
 import { glassmorphismContainer } from '$styles/tokens';
 
-import { getKey } from '../keys';
 import { Video } from './video';
+import { getKey } from '$utils/sort-ability-by-name';
 
 interface SelectedAbilityProps {
   selectedAbility?: Ability;

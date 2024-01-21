@@ -12,13 +12,14 @@ import {
 } from '@chakra-ui/react';
 
 import {
-  BsFullscreen,
-  BsFillVolumeUpFill,
   BsFillVolumeMuteFill,
+  BsFillVolumeUpFill,
+  BsFullscreen,
 } from 'react-icons/bs';
 
-import { getAbilityVideoSrc, Key } from '$utils/get-ability-video-src';
 import { ExternalLink } from '$components/external-link';
+import { useShimmerAnimation } from '$hooks/use-shimmer-animation';
+import { getAbilityVideoSrc, Key } from '$utils/get-ability-video-src';
 
 interface VideoProps {
   abilityKey: string;
@@ -28,6 +29,8 @@ interface VideoProps {
 export function Video({ abilityKey, agentName }: VideoProps) {
   const [muted, mutedActions] = useBoolean(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const shimmerAnimation = useShimmerAnimation();
 
   if (abilityKey === '-') {
     return null;
@@ -50,7 +53,7 @@ export function Video({ abilityKey, agentName }: VideoProps) {
 
       <Box
         w="full"
-        h={{ base: 'auto', lg: '400px' }}
+        h={{ base: '200px', md: '300px', lg: '400px' }}
         pos="relative"
         overflow="hidden"
         borderBottomColor="whiteAlpha.100"
@@ -74,7 +77,19 @@ export function Video({ abilityKey, agentName }: VideoProps) {
           />
         </HStack>
 
-        <video autoPlay loop muted={muted} src={src} ref={videoRef} />
+        <Box
+          as="video"
+          w="full"
+          h="full"
+          objectFit="cover"
+          autoPlay
+          loop
+          muted={muted}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ref={videoRef as any}
+          src={src}
+          {...shimmerAnimation}
+        />
       </Box>
 
       <Text color="gray.500" textAlign="right" mt="4" pr="4">
