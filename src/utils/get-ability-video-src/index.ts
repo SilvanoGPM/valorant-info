@@ -14,6 +14,8 @@ type SpecialCase = Record<
     Q?: string;
     E?: string;
     X?: string;
+
+    shouldRemoveAbilitiesStringInUrl?: boolean;
   }
 >;
 
@@ -65,20 +67,47 @@ const specialCases: SpecialCase = {
     E: 'Iso_Ability_E',
     X: 'Iso_Ability_X-Larger',
   },
+
+  Vyse: {
+    Q: 'shear',
+    E: 'arc rose',
+    C: 'razorvine',
+    X: 'steel garden',
+    shouldRemoveAbilitiesStringInUrl: true,
+  },
+
+  Tejo: {
+    C: 'Special Delivery',
+    Q: 'Guided Salvo',
+    E: 'Stealth Drone',
+    X: 'Armageddon',
+    shouldRemoveAbilitiesStringInUrl: true,
+  },
+
+  Clove: {
+    C: 'Clove - Ability C',
+    Q: 'Clove - Ability Q',
+    E: 'Clove - Ability E',
+    X: 'Clove - Ability X',
+    shouldRemoveAbilitiesStringInUrl: true,
+  },
 };
 
-function getVideoPath(agentName: string, key: Key): string {
+function getVideoPath(agentName: string, key: Key): [string, boolean] {
   const specialCase = specialCases[agentName as keyof typeof specialCases];
 
   if (specialCase) {
-    const keyCase = specialCase[key as keyof typeof specialCase]!;
+    const keyCase = specialCase[key as keyof typeof specialCase] as string;
 
     if (keyCase) {
-      return keyCase;
+      return [
+        keyCase,
+        specialCase['shouldRemoveAbilitiesStringInUrl'] ?? false,
+      ];
     }
   }
 
-  return `${agentName.replaceAll('/', '')}_${key}`;
+  return [`${agentName.replaceAll('/', '')}_${key}`, false];
 }
 
 export function getAbilityVideoSrc({
@@ -86,7 +115,16 @@ export function getAbilityVideoSrc({
   key,
 }: GetAbilityVideoSrcParams) {
   const agentUrlName = formatToURL(agentName);
-  const videoKey = getVideoPath(agentName, key);
+  const [videoKey, shouldRemoveAbilitiesStringInUrl] = getVideoPath(
+    agentName,
+    key,
+  );
 
-  return `https://blitz-cdn-videos.blitz.gg/valorant/agents/${agentUrlName}/abilities/${videoKey}.mp4#t=0.1`;
+  let baseUrl = `https://blitz-cdn-videos.blitz.gg/valorant/agents/${agentUrlName}/abilities`;
+
+  if (shouldRemoveAbilitiesStringInUrl) {
+    baseUrl = baseUrl.replace('abilities', '');
+  }
+
+  return `${baseUrl}/${videoKey}.mp4#t=0.1`;
 }
