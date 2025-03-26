@@ -15,7 +15,7 @@ export function WeaponsTemplate({ weapons }: WeaponsTemplateProps) {
     <Center
       flex="1"
       w="full"
-      p="8"
+      px="1"
       rounded="lg"
       flexDir="column"
       sx={glassmorphismContainer({ showBorder: false })}

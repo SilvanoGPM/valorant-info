@@ -1,10 +1,11 @@
 import { Box, Center, Flex, Image, Text } from '@chakra-ui/react';
 
 import type { AgentProps } from '$core/domain/entities/agent';
-import { fillZero } from '$utils/fill-zero';
 import { glassmorphismContainer } from '$styles/tokens';
-import Link from 'next/link';
+import { fillZero } from '$utils/fill-zero';
 import { formatToURL } from '$utils/format-to-url';
+import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 
 interface AgentCardProps {
   agent: AgentProps;
@@ -12,6 +13,27 @@ interface AgentCardProps {
 }
 
 export function AgentCard({ agent, number }: AgentCardProps) {
+  const imageRef = useRef<HTMLImageElement>(null);
+  const gradient = `linear(to-r, #${agent.images.background.gradient[0]}, #${agent.images.background.gradient[1]})`;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          imageRef.current?.setAttribute('src', agent.images.full);
+        }
+      }
+    });
+
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [agent]);
+
   return (
     <Link href={`agent/${formatToURL(agent.name)}`} role="group">
       <Flex
@@ -34,7 +56,12 @@ export function AgentCard({ agent, number }: AgentCardProps) {
           zIndex="-1"
           mt="2"
         >
-          <Image src={agent.images.full} objectFit="contain" />
+          <Image
+            ref={imageRef}
+            alt={agent.name}
+            objectFit="contain"
+            loading="lazy"
+          />
         </Box>
 
         <Text
@@ -76,6 +103,7 @@ export function AgentCard({ agent, number }: AgentCardProps) {
             <Image
               src={agent.role.icon}
               alt={agent.role.name}
+              mixBlendMode="multiply"
               w="6"
               h="6"
               mr="2"
@@ -90,7 +118,7 @@ export function AgentCard({ agent, number }: AgentCardProps) {
             transitionDelay="0.25s"
             h="2px"
             w="0"
-            bg="gray.300"
+            bgGradient={gradient}
             _groupHover={{
               opacity: 1,
               w: '50%',
@@ -101,7 +129,9 @@ export function AgentCard({ agent, number }: AgentCardProps) {
         <Box
           w="full"
           h="4px"
-          bgGradient={`linear(to-r, #${agent.images.background.gradient[0]}, #${agent.images.background.gradient[1]})`}
+          transition="0.2s ease-in-out"
+          bgGradient={gradient}
+          _groupHover={{ h: '8px' }}
         />
       </Flex>
     </Link>

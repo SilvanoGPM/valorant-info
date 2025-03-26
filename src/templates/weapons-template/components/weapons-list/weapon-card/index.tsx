@@ -25,13 +25,16 @@ export function WeaponCard({
   const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          imageRef.current?.setAttribute('src', image);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            imageRef.current?.setAttribute('src', image);
+          }
         }
-      }
-    });
+      },
+      { threshold: 0.5 },
+    );
 
     if (imageRef.current) {
       observer.observe(imageRef.current);
@@ -48,6 +51,7 @@ export function WeaponCard({
       h={{ base: '500px', md: '600px' }}
       w="full"
       px="4"
+      pt="16"
       rounded="lg"
       sx={glassmorphismContainer()}
     >

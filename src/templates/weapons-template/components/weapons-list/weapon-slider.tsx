@@ -24,7 +24,6 @@ export function WeaponSlider({ weapon }: WeaponSliderProps) {
     navigation: true,
     draggable: true,
     loop: true,
-    // TODO: Configurar isso melhor
     pagination: undefined,
   };
 
@@ -68,7 +67,7 @@ export function WeaponSlider({ weapon }: WeaponSliderProps) {
     >
       <Flex
         position="absolute"
-        zIndex="10"
+        zIndex="1"
         top="0"
         left="0"
         right="0"
@@ -95,6 +94,10 @@ export function WeaponSlider({ weapon }: WeaponSliderProps) {
               filter:
                 'invert(22%) sepia(97%) saturate(7480%) hue-rotate(357deg) brightness(98%) contrast(114%)',
             },
+          }}
+          _placeholder={{
+            color: 'brand.500',
+            opacity: 0.4,
           }}
         />
       </Flex>

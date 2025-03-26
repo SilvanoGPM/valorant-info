@@ -8,7 +8,7 @@ export function WeaponsList({ weapons }: WeaponsTemplateProps) {
     <SimpleGrid
       w="full"
       spacing={4}
-      minChildWidth={{ base: '200px', sm: '400px' }}
+      minChildWidth={{ base: '200px', sm: '420px' }}
       justifyItems="center"
     >
       {weapons.map((weapon) => (
